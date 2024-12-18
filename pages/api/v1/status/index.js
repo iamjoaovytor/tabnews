@@ -1,5 +1,9 @@
-function status(request, response) {
-  response.status(200).json({ chave: "joão ama a mikinhaaa" });
+import database from "../../../../infra/database.js";
+
+async function status(request, response) {
+  const result = await database.query("SELECT 1+1 as sum;");
+  console.log(result.rows);
+  response.status(200).json({ status: "rota /status está em desenvolvimento" });
 }
 
 export default status;
